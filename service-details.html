@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Service Details - Craftivo Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Service Details - MR Vivek</title>
+  <meta name="description" content="Technical services and capabilities offered by Vivek.">
+  <meta name="keywords" content="Vivek, Services, Full Stack, Python, Django, Networking, Cybersecurity">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/vcrypt-icon.svg?v=2" rel="icon" type="image/svg+xml">
+  <link href="assets/img/favicon.png?v=2" rel="icon" sizes="64x64" type="image/png">
+  <link href="assets/img/apple-touch-icon.png?v=2" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -23,6 +24,16 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Initialize system theme early to prevent flash of unstyled content -->
+  <script>
+    (function () {
+      try {
+        var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -42,41 +53,22 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Craftivo</h1>
+        <h1 class="sitename">MR Vivek</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#resume">Resume</a></li>
+          <li><a href="index.html#services" class="active">Services</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#about">Get Started</a>
+      <a class="btn-getstarted" href="index.html#about">Get Started</a>
 
     </div>
   </header>
@@ -112,46 +104,46 @@
                   <div class="service-icon">
                     <i class="bi bi-code-square"></i>
                   </div>
-                  <h3>Web Development</h3>
-                  <p class="service-tagline">Full-Stack Solutions</p>
+                  <h3>Full Stack &amp; Security</h3>
+                  <p class="service-tagline">Python, Django &amp; Networking</p>
                 </div>
                 <div class="card-body">
                   <div class="price-tag">
-                    <span class="label">Starting at</span>
-                    <span class="price">$2,500</span>
+                    <span class="label">Availability</span>
+                    <span class="price">Open to Work</span>
                   </div>
                   <ul class="quick-info">
                     <li>
                       <i class="bi bi-clock"></i>
-                      <span>4-6 weeks delivery</span>
+                      <span>Internships &amp; Projects</span>
                     </li>
                     <li>
                       <i class="bi bi-arrow-repeat"></i>
-                      <span>Unlimited revisions</span>
+                      <span>Clean Modular Code</span>
                     </li>
                     <li>
                       <i class="bi bi-shield-check"></i>
-                      <span>60 days support</span>
+                      <span>Security-First Mindset</span>
                     </li>
                   </ul>
                   <div class="cta-buttons">
-                    <a href="#" class="btn-primary">Start Project</a>
-                    <a href="#" class="btn-secondary">Schedule Call</a>
+                    <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+                    <a href="assets/img/vivek(cv).pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary">Download CV</a>
                   </div>
                 </div>
               </div>
 
               <div class="contact-card" data-aos="fade-left" data-aos-delay="300">
                 <h4>Have Questions?</h4>
-                <p>Let's discuss your project requirements and how I can help.</p>
+                <p>Let's discuss your project requirements or internship/job opportunities.</p>
                 <div class="contact-methods">
-                  <a href="mailto:hello@example.com" class="contact-item">
+                  <a href="mailto:mr.vivek7009@gmail.com" class="contact-item">
                     <i class="bi bi-envelope"></i>
-                    <span>hello@example.com</span>
+                    <span>mr.vivek7009@gmail.com</span>
                   </a>
-                  <a href="tel:+15551234567" class="contact-item">
+                  <a href="tel:+919518057009" class="contact-item">
                     <i class="bi bi-telephone"></i>
-                    <span>+1 (555) 123-4567</span>
+                    <span>+91 9518057009</span>
                   </a>
                 </div>
               </div>
@@ -164,60 +156,61 @@
 
             <div class="service-overview" data-aos="fade-up" data-aos-delay="200">
               <div class="overview-header">
-                <span class="badge">Premium Service</span>
-                <h2>Professional Web Development That Drives Results</h2>
+                <span class="badge">Core Capabilities</span>
+                <h2>Full Stack Web Development, Networking &amp; Cybersecurity</h2>
               </div>
-              <p class="lead-text">Transform your digital presence with custom web solutions built to perform. I specialize in creating high-performance websites that combine stunning design with powerful functionality, delivering exceptional user experiences that convert visitors into customers.</p>
+              <p class="lead-text">I build full-stack web applications using Python, Django, HTML, CSS, Bootstrap, JavaScript, and SQL while applying practical Linux, computer networking, and cybersecurity fundamentals.</p>
             </div>
 
             <div class="service-image-showcase" data-aos="zoom-in" data-aos-delay="300">
-              <img src="assets/img/services/services-1.webp" alt="Web Development" class="img-fluid main-image">
+              <!-- Add service showcase image manually: <img src="assets/img/services/your-image.webp" alt="Web Development" class="img-fluid main-image"> -->
+              <div class="image-placeholder details-image-placeholder" aria-hidden="true"></div>
               <div class="image-overlay">
                 <div class="tech-stack">
-                  <span class="tech-item">React</span>
-                  <span class="tech-item">Node.js</span>
-                  <span class="tech-item">MongoDB</span>
+                  <span class="tech-item">Python</span>
+                  <span class="tech-item">Django</span>
+                  <span class="tech-item">SQL &amp; Cybersecurity</span>
                 </div>
               </div>
             </div>
 
             <div class="features-grid" data-aos="fade-up" data-aos-delay="400">
-              <h3 class="section-heading">What You Get</h3>
+              <h3 class="section-heading">Core Domains</h3>
               <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="feature-box">
+                    <div class="icon-wrapper">
+                      <i class="bi bi-diagram-3"></i>
+                    </div>
+                    <h4>Computer Networking</h4>
+                    <p>TCP/IP &amp; OSI layers, IP addressing/subnetting, DNS/DHCP, routing fundamentals, HTTP/HTTPS inspection, and packet analysis.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="feature-box">
+                    <div class="icon-wrapper">
+                      <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <h4>Core Cybersecurity</h4>
+                    <p>Vulnerability assessment, penetration testing basics, secure OTP &amp; role-based auth, Linux hardening, and ISRO Cyber Security training.</p>
+                  </div>
+                </div>
                 <div class="col-md-6">
                   <div class="feature-box">
                     <div class="icon-wrapper">
                       <i class="bi bi-layers"></i>
                     </div>
-                    <h4>Modern Architecture</h4>
-                    <p>Scalable, maintainable code structure using the latest web technologies and best practices for long-term success.</p>
+                    <h4>Full Stack Engineering</h4>
+                    <p>End-to-end applications across Python, Django, Java 17 / Spring Boot 3, React 19, TypeScript, Bootstrap, and SQL databases.</p>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="feature-box">
                     <div class="icon-wrapper">
-                      <i class="bi bi-speedometer2"></i>
+                      <i class="bi bi-cpu"></i>
                     </div>
-                    <h4>Lightning Fast</h4>
-                    <p>Optimized performance with lazy loading, code splitting, and CDN integration for instant page loads.</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="feature-box">
-                    <div class="icon-wrapper">
-                      <i class="bi bi-phone-landscape"></i>
-                    </div>
-                    <h4>Responsive Design</h4>
-                    <p>Pixel-perfect layouts that adapt seamlessly across all devices, from mobile phones to large desktop screens.</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="feature-box">
-                    <div class="icon-wrapper">
-                      <i class="bi bi-graph-up"></i>
-                    </div>
-                    <h4>SEO Optimized</h4>
-                    <p>Search engine friendly structure with semantic HTML, meta tags, and performance optimizations built in.</p>
+                    <h4>AI, NLP &amp; Analytics</h4>
+                    <p>Automation assistants and scoring pipelines using Python, NLP, ML, Deep Learning, Neural Networks, and on-chain data analysis.</p>
                   </div>
                 </div>
               </div>
@@ -229,90 +222,66 @@
                 <div class="timeline-item">
                   <div class="timeline-marker">1</div>
                   <div class="timeline-content">
-                    <h4>Strategy &amp; Planning</h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                    <span class="duration">1 week</span>
+                    <h4>Requirements &amp; Architecture</h4>
+                    <p>Analyze goals, plan database schemas, define routing, and ensure clean security considerations upfront.</p>
+                    <span class="duration">Phase 1</span>
                   </div>
                 </div>
                 <div class="timeline-item">
                   <div class="timeline-marker">2</div>
                   <div class="timeline-content">
-                    <h4>Design &amp; Prototyping</h4>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae.</p>
-                    <span class="duration">1-2 weeks</span>
+                    <h4>Frontend &amp; Responsive UI</h4>
+                    <p>Craft accessible, mobile-friendly interfaces with HTML5, CSS3, Bootstrap 5, and JavaScript.</p>
+                    <span class="duration">Phase 2</span>
                   </div>
                 </div>
                 <div class="timeline-item">
                   <div class="timeline-marker">3</div>
                   <div class="timeline-content">
-                    <h4>Development &amp; Testing</h4>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
-                    <span class="duration">2-3 weeks</span>
+                    <h4>Backend &amp; Database Integration</h4>
+                    <p>Implement Python &amp; Django views, authentication, CRUD operations, and MySQL/SQL persistence.</p>
+                    <span class="duration">Phase 3</span>
                   </div>
                 </div>
                 <div class="timeline-item">
                   <div class="timeline-marker">4</div>
                   <div class="timeline-content">
-                    <h4>Launch &amp; Optimization</h4>
-                    <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur vel illum qui dolorem.</p>
-                    <span class="duration">1 week</span>
+                    <h4>Testing &amp; Deployment</h4>
+                    <p>Verify endpoints, browser responsiveness, and Linux server configuration for reliable launch.</p>
+                    <span class="duration">Phase 4</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-section" data-aos="fade-up" data-aos-delay="600">
-              <div class="testimonial-card">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <blockquote>
-                  "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Exceptional work and outstanding communication throughout."
-                </blockquote>
-                <div class="client-info">
-                  <img src="assets/img/person/person-m-5.webp" alt="Michael Chen" class="client-avatar">
-                  <div class="client-details">
-                    <h5>Michael Chen</h5>
-                    <p>Founder, TechStart Inc.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="tech-details" data-aos="fade-up" data-aos-delay="700">
+            <div class="tech-details" data-aos="fade-up" data-aos-delay="600">
               <h3 class="section-heading">Technologies &amp; Tools</h3>
               <div class="tech-categories">
                 <div class="tech-category">
                   <h5>Frontend</h5>
                   <div class="tech-tags">
-                    <span>React</span>
-                    <span>Vue.js</span>
-                    <span>TypeScript</span>
-                    <span>Tailwind CSS</span>
-                    <span>SASS</span>
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>Bootstrap 5</span>
+                    <span>JavaScript</span>
                   </div>
                 </div>
                 <div class="tech-category">
                   <h5>Backend</h5>
                   <div class="tech-tags">
-                    <span>Node.js</span>
-                    <span>Express</span>
                     <span>Python</span>
                     <span>Django</span>
-                    <span>REST API</span>
+                    <span>REST / HTTP</span>
+                    <span>NLP / ML</span>
                   </div>
                 </div>
                 <div class="tech-category">
-                  <h5>Database</h5>
+                  <h5>Systems &amp; Data</h5>
                   <div class="tech-tags">
-                    <span>MongoDB</span>
-                    <span>PostgreSQL</span>
-                    <span>Redis</span>
-                    <span>Firebase</span>
+                    <span>MySQL</span>
+                    <span>SQL</span>
+                    <span>Linux</span>
+                    <span>Networking</span>
                   </div>
                 </div>
               </div>
@@ -334,59 +303,54 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Craftivo</span>
+            <span class="sitename">Vivek</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>B.Tech CSE student specializing in Computer Networks &amp; Cybersecurity, passionate about full-stack Python/Django development and secure digital solutions.</p>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:mr.vivek7009@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="index.html#services">Network &amp; Cybersecurity</a></li>
+            <li><a href="index.html#services">Full Stack Development</a></li>
+            <li><a href="index.html#services">Python &amp; Django</a></li>
+            <li><a href="index.html#services">E-Commerce Operations</a></li>
+            <li><a href="index.html#services">Linux &amp; MySQL</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+          <p>Greater Noida</p>
+          <p>Uttar Pradesh</p>
+          <p>India</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+91 9518057009</span></p>
+          <p><strong>Email:</strong> <span>mr.vivek7009@gmail.com</span></p>
         </div>
 
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Craftivo</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Vivek</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+        Designed by <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer">MR Vivek</a> | <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
 

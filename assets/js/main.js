@@ -10,6 +10,28 @@
   "use strict";
 
   /**
+   * Automatic System Theme (follows device Dark / Light preference)
+   */
+  const systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function applySystemTheme() {
+    const resolved = systemDarkQuery.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', resolved);
+  }
+
+  function initSystemTheme() {
+    applySystemTheme();
+
+    if (typeof systemDarkQuery.addEventListener === 'function') {
+      systemDarkQuery.addEventListener('change', applySystemTheme);
+    } else if (typeof systemDarkQuery.addListener === 'function') {
+      systemDarkQuery.addListener(applySystemTheme);
+    }
+  }
+
+  initSystemTheme();
+
+  /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
@@ -80,13 +102,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -166,9 +190,11 @@
       filters.addEventListener('click', function() {
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
+        if (initIsotope) {
+          initIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+        }
         if (typeof aosInit === 'function') {
           aosInit();
         }
@@ -235,5 +261,64 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Portfolio Contact Form (PHP endpoint with static-host mailto fallback)
+   */
+  document.querySelectorAll('.portfolio-contact-form').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const loadingEl = form.querySelector('.loading');
+      const errorEl = form.querySelector('.error-message');
+      const sentEl = form.querySelector('.sent-message');
+      const fallbackEmail = form.getAttribute('data-fallback-email') || 'mr.vivek7009@gmail.com';
+      const action = form.getAttribute('action');
+
+      loadingEl.classList.add('d-block');
+      errorEl.classList.remove('d-block');
+      sentEl.classList.remove('d-block');
+
+      const formData = new FormData(form);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const subject = String(formData.get('subject') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+
+      const openMailtoFallback = () => {
+        const mailSubject = encodeURIComponent(subject || `Portfolio Inquiry from ${name}`);
+        const mailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+        loadingEl.classList.remove('d-block');
+        sentEl.textContent = `Opening your email app to send this message to ${fallbackEmail}.`;
+        sentEl.classList.add('d-block');
+        window.location.href = `mailto:${fallbackEmail}?subject=${mailSubject}&body=${mailBody}`;
+        form.reset();
+      };
+
+      if (!action) {
+        openMailtoFallback();
+        return;
+      }
+
+      try {
+        const response = await fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+        const text = await response.text();
+        if (response.ok && text.trim() === 'OK') {
+          loadingEl.classList.remove('d-block');
+          sentEl.textContent = 'Your message has been sent. Thank you!';
+          sentEl.classList.add('d-block');
+          form.reset();
+        } else {
+          openMailtoFallback();
+        }
+      } catch (err) {
+        openMailtoFallback();
+      }
+    });
+  });
 
 })();

@@ -20,7 +20,9 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
   --background-color: #141414; /* Background color for the entire website, including individual sections */
   --default-color: #d9d9d9; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #ededed; /* Color for headings, subheadings and title throughout the website */
@@ -30,7 +32,8 @@
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
+:root,
+[data-theme="dark"] {
   --nav-color: #d9d9d9;  /* The default color of the main navmenu links */
   --nav-hover-color: #ff4d4f; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #2e2e2e; /* Used as the background color for mobile navigation menu */
@@ -39,11 +42,51 @@
   --nav-dropdown-hover-color: #ff4d4f; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
+/* Light Theme Colors */
+[data-theme="light"] {
+  color-scheme: light;
+  --background-color: #f4f6f9;
+  --default-color: #343a40;
+  --heading-color: #1a1d20;
+  --accent-color: #e03e40;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #212529;
+  --nav-hover-color: #e03e40;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #212529;
+  --nav-dropdown-hover-color: #e03e40;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --background-color: #f4f6f9;
+    --default-color: #343a40;
+    --heading-color: #1a1d20;
+    --accent-color: #e03e40;
+    --surface-color: #ffffff;
+    --contrast-color: #ffffff;
+    --nav-color: #212529;
+    --nav-hover-color: #e03e40;
+    --nav-mobile-background-color: #ffffff;
+    --nav-dropdown-background-color: #ffffff;
+    --nav-dropdown-color: #212529;
+    --nav-dropdown-hover-color: #e03e40;
+  }
+}
+
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
   --background-color: rgba(41, 41, 41, 0.8);
   --surface-color: #484848;
+}
+
+[data-theme="light"] .light-background {
+  --background-color: #e9edf3;
+  --surface-color: #ffffff;
 }
 
 .dark-background {
@@ -91,7 +134,8 @@ h6 {
 
 /* PHP Email Form Messages
 ------------------------------*/
-.php-email-form .error-message {
+.php-email-form .error-message,
+.portfolio-contact-form .error-message {
   display: none;
   background: #df1529;
   color: #ffffff;
@@ -99,9 +143,11 @@ h6 {
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  border-radius: 6px;
 }
 
-.php-email-form .sent-message {
+.php-email-form .sent-message,
+.portfolio-contact-form .sent-message {
   display: none;
   color: #ffffff;
   background: #059652;
@@ -109,9 +155,11 @@ h6 {
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  border-radius: 6px;
 }
 
-.php-email-form .loading {
+.php-email-form .loading,
+.portfolio-contact-form .loading {
   display: none;
   background: var(--surface-color);
   text-align: center;
@@ -119,7 +167,8 @@ h6 {
   margin-bottom: 24px;
 }
 
-.php-email-form .loading:before {
+.php-email-form .loading:before,
+.portfolio-contact-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -209,7 +258,8 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: rgba(20, 20, 20, 0.8);
+  --background-color: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(10px);
 }
 
 /* Index Page Header
@@ -218,10 +268,27 @@ h6 {
   --background-color: rgba(255, 255, 255, 0);
 }
 
+body.index-page:not(.scrolled) .header {
+  --heading-color: #ffffff;
+  --nav-color: #f1f3f5;
+}
+
 /* Index Page Header on Scroll
 ------------------------------*/
 .index-page.scrolled .header {
-  --background-color: rgba(20, 20, 20, 0.8);
+  --background-color: rgba(20, 20, 20, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] body:not(.index-page) .header,
+[data-theme="light"] .scrolled .header,
+[data-theme="light"] .index-page.scrolled .header {
+  --background-color: rgba(255, 255, 255, 0.92);
+  --heading-color: #1a1d20;
+  --nav-color: #212529;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /*--------------------------------------------------------------
@@ -791,12 +858,13 @@ section,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   z-index: 1;
 }
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: radial-gradient(circle at center, rgba(6, 6, 6, 0.25) 0%, rgba(6, 6, 6, 0.45) 100%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -913,7 +981,8 @@ section,
   background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #ff6b9d 50%));
 }
 
-.about .profile-card .profile-header .profile-avatar img {
+.about .profile-card .profile-header .profile-avatar img,
+.about .profile-card .profile-header .profile-avatar .avatar-placeholder {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2229,14 +2298,16 @@ section,
   color: var(--default-color);
 }
 
-.contact .php-email-form {
+.contact .php-email-form,
+.contact .portfolio-contact-form {
   background: var(--surface-color);
   padding: 40px;
   border-radius: 10px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.contact .php-email-form .form-control {
+.contact .php-email-form .form-control,
+.contact .portfolio-contact-form .form-control {
   color: var(--default-color);
   background-color: var(--surface-color);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
@@ -2246,20 +2317,24 @@ section,
   transition: 0.3s;
 }
 
-.contact .php-email-form .form-control:focus {
+.contact .php-email-form .form-control:focus,
+.contact .portfolio-contact-form .form-control:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
-.contact .php-email-form .form-control::placeholder {
+.contact .php-email-form .form-control::placeholder,
+.contact .portfolio-contact-form .form-control::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.contact .php-email-form textarea.form-control {
+.contact .php-email-form textarea.form-control,
+.contact .portfolio-contact-form textarea.form-control {
   min-height: 120px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type=submit],
+.contact .portfolio-contact-form button[type=submit] {
   background: var(--accent-color);
   color: var(--contrast-color);
   border: none;
@@ -2271,7 +2346,8 @@ section,
   transition: 0.3s;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type=submit]:hover,
+.contact .portfolio-contact-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
   transform: translateY(-2px);
 }
@@ -2295,7 +2371,8 @@ section,
     font-size: 16px;
   }
 
-  .contact .php-email-form {
+  .contact .php-email-form,
+  .contact .portfolio-contact-form {
     padding: 30px 20px;
   }
 }
@@ -2928,7 +3005,7 @@ section,
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, color-mix(in srgb, var(--default-color), transparent 20%), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
   padding: 2rem;
 }
 
@@ -4248,4 +4325,101 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/* Smooth theme transition when system preference changes */
+body,
+section,
+.section,
+.footer,
+.page-title,
+.profile-card,
+.exp-card,
+.service-item,
+.info-item,
+.portfolio-contact-form,
+.php-email-form {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Blank Image Placeholders (for manual images) */
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--default-color), transparent 95%);
+  border: 1px dashed color-mix(in srgb, var(--default-color), transparent 78%);
+}
+
+.portfolio-image-placeholder {
+  border-radius: 8px;
+}
+
+.details-image-placeholder {
+  aspect-ratio: 16 / 9;
+  min-height: 280px;
+  border-radius: 12px;
+}
+
+.portfolio .portfolio-card .portfolio-body {
+  padding-top: 14px;
+}
+
+.portfolio .portfolio-card .portfolio-category-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-color);
+  margin-bottom: 6px;
+}
+
+.portfolio .portfolio-card .portfolio-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+}
+
+.portfolio .portfolio-card .portfolio-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-bottom: 12px;
+}
+
+.portfolio .portfolio-card .portfolio-meta .project-tags {
+  flex-wrap: wrap;
+}
+
+.portfolio .portfolio-card .portfolio-details-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.portfolio .portfolio-card .portfolio-details-link:hover {
+  text-decoration: underline;
+}
+
+.portfolio .portfolio-card .portfolio-links-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portfolio .portfolio-card .portfolio-repo-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.portfolio .portfolio-card .portfolio-repo-link:hover {
+  color: var(--accent-color);
 }
