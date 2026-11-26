@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Owner Access Console — MR Vivek</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/vcrypt-icon.svg?v=2" rel="icon" type="image/svg+xml">
+  <link href="assets/img/favicon.png?v=2" rel="icon" sizes="64x64" type="image/png">
+  <link href="assets/img/apple-touch-icon.png?v=2" rel="apple-touch-icon">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Initialize system theme early -->
+  <script>
+    (function () {
+      try {
+        var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/admin.css" rel="stylesheet">
+</head>
+
+<body class="vcrypt-admin-body">
+  <div class="vcrypt-admin-shell">
+    <header class="vcrypt-admin-topbar">
+      <div class="vcrypt-admin-brand">
+        <div class="vcrypt-admin-logo">
+          <img src="assets/img/vcrypt-icon.svg?v=2" alt="VCRYPT Logo" width="34" height="34">
+        </div>
+        <div>
+          <h1>VCRYPT Access Control</h1>
+          <div class="vcrypt-admin-sub">
+            <span id="adminModePill" class="mode-pill">Detecting mode...</span>
+            <span id="adminLiveIndicator" class="live-dot" hidden><i class="bi bi-broadcast"></i> Live</span>
+            <span id="adminSessionTimer" class="session-pill" hidden title="Admin console auto-locks on inactivity or when leaving this page">
+              <i class="bi bi-clock-history"></i>
+              <span id="adminSessionTimerText">02:00</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vcrypt-admin-nav">
+        <a href="index.html" class="admin-btn ghost"><i class="bi bi-eye"></i> Open Portfolio</a>
+        <a href="index.html?preview=locked" class="admin-btn ghost"><i class="bi bi-shield-lock"></i> Test Blur Gate</a>
+        <button type="button" id="adminLogoutBtn" class="admin-btn danger-ghost" hidden>
+          <i class="bi bi-box-arrow-right"></i> Sign Out
+        </button>
+      </div>
+    </header>
+
+    <!-- Loading Auth Check -->
+    <section id="adminLoadingPanel" class="admin-auth-card">
+      <div class="vcrypt-spinner" aria-hidden="true"></div>
+      <p class="mb-0 mt-2">Connecting to Access Control...</p>
+    </section>
+
+    <!-- Local First-Time Setup -->
+    <section id="adminSetupPanel" class="admin-auth-card" hidden>
+      <div class="admin-auth-icon"><i class="bi bi-key-fill"></i></div>
+      <h2>Create Owner Passcode</h2>
+      <p>First-time setup: create a secure passcode (minimum 6 characters) to protect your Approval Console locally.</p>
+      <form id="adminSetupForm" class="admin-form">
+        <div class="admin-field">
+          <label for="setupPasscode">New Passcode</label>
+          <input id="setupPasscode" type="password" minlength="6" maxlength="128" required placeholder="At least 6 characters">
+        </div>
+        <div class="admin-field">
+          <label for="setupPasscodeConfirm">Confirm Passcode</label>
+          <input id="setupPasscodeConfirm" type="password" minlength="6" maxlength="128" required placeholder="Re-enter passcode">
+        </div>
+        <div id="setupError" class="admin-error" hidden></div>
+        <button type="submit" class="admin-btn primary w-100">Save Passcode &amp; Enter Console</button>
+      </form>
+    </section>
+
+    <!-- Local Passcode Login -->
+    <section id="adminLoginPanel" class="admin-auth-card" hidden>
+      <div class="admin-auth-icon"><i class="bi bi-shield-lock-fill"></i></div>
+      <h2>Owner Sign In</h2>
+      <p>Enter your owner passcode to review, approve, reject, or revoke portfolio access requests.</p>
+      <div id="loginNotice" class="admin-notice" hidden></div>
+      <form id="adminLoginForm" class="admin-form">
+        <div class="admin-field">
+          <label for="loginPasscode">Admin Passcode</label>
+          <input id="loginPasscode" type="password" required placeholder="Enter your passcode" autocomplete="current-password">
+        </div>
+        <div id="loginError" class="admin-error" hidden></div>
+        <button type="submit" class="admin-btn primary w-100">Unlock Admin Console</button>
+      </form>
+    </section>
+
+    <!-- Firebase Cloud Auth Login -->
+    <section id="adminFirebasePanel" class="admin-auth-card" hidden>
+      <div class="admin-auth-icon"><i class="bi bi-cloud-check-fill"></i></div>
+      <h2>Firebase Owner Authentication</h2>
+      <p id="firebaseAuthSub">Sign in with your authorized Google account (<strong id="firebaseAdminEmailLabel"></strong>) to manage live visitor requests.</p>
+      <div id="firebaseAuthError" class="admin-error" hidden></div>
+      <div class="d-grid gap-2 mt-3">
+        <button type="button" id="firebaseGoogleLoginBtn" class="admin-btn primary">
+          <i class="bi bi-google"></i> Sign in with Google
+        </button>
+      </div>
+    </section>
+
+    <!-- Backend Unconfigured Notice -->
+    <section id="adminUnconfiguredPanel" class="admin-auth-card" hidden>
+      <div class="admin-auth-icon warn"><i class="bi bi-cloud-slash"></i></div>
+      <h2>Backend Not Running</h2>
+      <p>Start the local gate server with <code>node server.mjs</code> to manage requests locally, or add your Firebase config inside <code>assets/js/gate-config.js</code> for live hosting.</p>
+    </section>
+
+    <!-- Authenticated Dashboard -->
+    <main id="adminDashboard" class="vcrypt-admin-main" hidden>
+      <!-- Stats Row -->
+      <section class="admin-stats-grid" aria-label="Request Statistics">
+        <div class="stat-box">
+          <span class="stat-label">Total Requests</span>
+          <strong id="statTotal" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box pending">
+          <span class="stat-label">Pending Approval</span>
+          <strong id="statPending" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box approved">
+          <span class="stat-label">Approved</span>
+          <strong id="statApproved" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box rejected">
+          <span class="stat-label">Declined / Revoked</span>
+          <strong id="statBlocked" class="stat-value">0</strong>
+        </div>
+      </section>
+
+      <!-- Filters & Search -->
+      <section class="admin-toolbar">
+        <div class="admin-filter-tabs" role="tablist" aria-label="Filter requests by status">
+          <button type="button" class="filter-tab active" data-filter="all">All</button>
+          <button type="button" class="filter-tab" data-filter="pending">Pending</button>
+          <button type="button" class="filter-tab" data-filter="approved">Approved</button>
+          <button type="button" class="filter-tab" data-filter="rejected">Rejected</button>
+          <button type="button" class="filter-tab" data-filter="revoked">Revoked</button>
+        </div>
+
+        <div class="admin-toolbar-right">
+          <div class="admin-search-wrap">
+            <i class="bi bi-search"></i>
+            <input id="adminSearchInput" type="search" placeholder="Search name, email, purpose, reason...">
+          </div>
+          <button type="button" id="adminRefreshBtn" class="admin-btn ghost"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+        </div>
+      </section>
+
+      <!-- Requests List -->
+      <section id="adminRequestsContainer" class="admin-requests-list"></section>
+
+      <!-- Owner Security & Firebase Setup Panel -->
+      <section class="admin-settings-grid">
+        <div id="localPasscodeCard" class="admin-settings-card" hidden>
+          <h3><i class="bi bi-shield-lock"></i> Change Owner Passcode</h3>
+          <form id="changePasscodeForm" class="admin-form">
+            <div class="admin-field">
+              <label for="currentPasscode">Current Passcode</label>
+              <input id="currentPasscode" type="password" required>
+            </div>
+            <div class="admin-field">
+              <label for="newPasscode">New Passcode</label>
+              <input id="newPasscode" type="password" minlength="6" maxlength="128" required>
+            </div>
+            <div id="passcodeMsg" class="admin-feedback" hidden></div>
+            <button type="submit" class="admin-btn secondary">Update Passcode</button>
+          </form>
+        </div>
+
+        <div class="admin-settings-card">
+          <h3><i class="bi bi-cloud-upload"></i> Live Hosting Setup (GitHub Pages + Firebase)</h3>
+          <p class="small text-muted mb-2">
+            To handle live visitor approvals on the public internet (even from GitHub Pages), enable free Firebase Auth (Anonymous + Google) and Firestore with <code>firestore.rules</code>, store your AES key in Firestore document <code>vault_secrets/portfolio_key</code> as <code>keyBase64</code>, and paste your config into <code>assets/js/gate-config.js</code>.
+          </p>
+          <div class="vault-key-box">
+            <span class="vault-key-label">AES-256 Vault Key:</span>
+            <code id="vaultKeyPreview">••••••••••••••••••••••••••••••••••••••••••••</code>
+            <div class="d-flex gap-2 mt-2">
+              <button type="button" id="toggleKeyBtn" class="admin-btn ghost sm">Reveal Key</button>
+              <button type="button" id="copyKeyBtn" class="admin-btn secondary sm">Copy Key</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/gate-config.js"></script>
+  <script type="module" src="assets/js/admin.js"></script>
+</body>
+
+</html>

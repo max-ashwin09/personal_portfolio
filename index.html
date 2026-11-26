@@ -4,11 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>MR Vivek - Portfolio</title>
-  <meta name="description"
-    content="Personal portfolio of Vivek - B.Tech CSE (Computer Networks & Cybersecurity) student and Full Stack Python/Django Developer.">
-  <meta name="keywords"
-    content="Vivek, Portfolio, Computer Networks, Cybersecurity, Python, Django, Full Stack Developer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio Access Required</title>
+  <meta name="description" content="Approval-protected portfolio workspace. Request owner permission to view content.">
 
   <!-- Favicons -->
   <link href="assets/img/vcrypt-icon.svg?v=2" rel="icon" type="image/svg+xml">
@@ -35,1183 +33,165 @@
       try {
         var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      } catch (e) { }
+      } catch (e) {}
     })();
   </script>
 
-  <!-- Main CSS File -->
+  <!-- Main & Access Gate CSS Files -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Craftivo
-  * Template URL: https://bootstrapmade.com/craftivo-bootstrap-portfolio-template/
-  * Updated: Oct 04 2025 with Bootstrap v5.3.8
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="assets/css/gate.css" rel="stylesheet">
 </head>
 
-<body class="index-page">
+<body class="gate-locked-body" data-gate-page="index.html">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <!-- Decrypted portfolio DOM is injected here only after owner approval -->
+  <div id="vcrypt-unlocked-root" hidden></div>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">MR - VIVEK</h1>
-      </a>
+  <!-- Redacted Blurred Wireframe Preview + Request Access Overlay (zero sensitive data in locked DOM) -->
+  <div id="vcrypt-gate-stage" class="vcrypt-gate-stage">
+    <div class="vcrypt-blurred-backdrop" aria-hidden="true">
+      <div class="vcrypt-fake-navbar">
+        <div class="vcrypt-skel vcrypt-skel-brand"></div>
+        <div class="vcrypt-fake-navlinks">
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-cta"></span>
+        </div>
+      </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      <div class="vcrypt-fake-hero">
+        <div class="vcrypt-hero-glow"></div>
+        <div class="vcrypt-skel vcrypt-skel-pill"></div>
+        <div class="vcrypt-skel vcrypt-skel-title"></div>
+        <div class="vcrypt-skel vcrypt-skel-subtitle"></div>
+        <div class="vcrypt-fake-chips">
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+        </div>
+      </div>
 
-      <a class="btn-getstarted" href="#about">Get Started</a>
-
+      <div class="vcrypt-fake-grid">
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="assets/img/profile/hero-bg.jpeg" alt="Cybersecurity and Computer Networking Background"
-        data-aos="fade-in">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <h2>Hi, I'm Vivek</h2>
-            <p>I'm a <span class="typed"
-                data-typed-items="B.Tech CSE (Computer Network &amp; Cybersecurity) Student, Core Cybersecurity Enthusiast, Computer Network Analyzer, Python &amp; Django Full Stack Developer, AI &amp; ML Developer"></span><span
-                class="typed-cursor" aria-hidden="true"></span></p>
-            <div class="social-links">
-              <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-                  class="bi bi-github"></i></a>
-              <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer"
-                aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            </div>
+    <div class="vcrypt-frosted-veil" role="dialog" aria-modal="true" aria-labelledby="vcryptGateTitle">
+      <div class="vcrypt-gate-card">
+        <div class="vcrypt-gate-header">
+          <div class="vcrypt-brand-emblem">
+            <img src="assets/img/vcrypt-icon.svg?v=2" alt="VCRYPT Shield" width="38" height="38">
           </div>
-        </div>
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">About Me</span>
-        <h2>About Me</h2>
-        <p>Passionate and goal-oriented Computer Science and Engineering (CSE) diploma graduate and B.Tech CSE (Computer
-          Network and Cybersecurity) student with a strong foundation in software development and cybersecurity.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="150">
-            <div class="profile-card">
-              <div class="profile-header">
-                <div class="profile-avatar">
-                  <img src="assets/img/profile/cyber-avatar.jpg" class="img-fluid"
-                    alt="Vivek — Cybersecurity &amp; Computer Networking">
-                  <div class="status-indicator"></div>
-                </div>
-                <h3>Vivek</h3>
-                <span class="role">B.Tech CSE (Networking &amp; Cybersecurity)</span>
-                <div class="rating">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                  <span>76.8% Diploma</span>
-                </div>
-              </div>
-
-              <div class="profile-stats">
-                <div class="stat-item">
-                  <h4>12+</h4>
-                  <p>Projects</p>
-                </div>
-                <div class="stat-item">
-                  <h4>3.5+ Yrs</h4>
-                  <p>Operations &amp; Tech</p>
-                </div>
-              </div>
-
-              <div class="profile-actions">
-                <a href="assets/img/vivek(cv).pdf" class="btn-primary" target="_blank" rel="noopener noreferrer"><i
-                    class="bi bi-download"></i> Download CV</a>
-                <a href="#contact" class="btn-secondary"><i class="bi bi-envelope"></i> Contact</a>
-              </div>
-
-              <div class="social-connect">
-                <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer"
-                  aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer"
-                  aria-label="GitHub"><i class="bi bi-github"></i></a>
-                <a href="mailto:mr.vivek7009@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                <a href="#portfolio" aria-label="Portfolio"><i class="bi bi-briefcase-fill"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
-            <div class="content-wrapper">
-              <div class="bio-section">
-                <div class="section-tag">Profile</div>
-                <h2>Core Cybersecurity, Networking &amp; Software Development</h2>
-
-                <p>
-                  Passionate and goal-oriented Computer Science and Engineering (CSE) diploma graduate currently
-                  pursuing B.Tech in CSE (Computer Network and Cybersecurity) at Galgotias University, Greater Noida,
-                  Uttar Pradesh.
-                </p>
-
-                <p>
-                  Focused on core Computer Networking (TCP/IP, OSI architecture, routing &amp; switching, packet
-                  analysis, Linux systems) and Core Cybersecurity (vulnerability assessment, network defense,
-                  penetration testing fundamentals, secure OTP/auth workflows), alongside building scalable full-stack
-                  applications with Python, Django, Java, React, SQL, and AI/ML.
-                </p>
-              </div>
-
-              <div class="details-grid">
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="250">
-                  <i class="bi bi-mortarboard"></i>
-                  <div class="detail-content">
-                    <span>Current Degree</span>
-                    <strong>Pursuing B.Tech CSE (Computer Network &amp; Cybersecurity)</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bi bi-award"></i>
-                  <div class="detail-content">
-                    <span>Diploma</span>
-                    <strong>CSE Diploma — 76.8% (First Division)</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="350">
-                  <i class="bi bi-geo-alt"></i>
-                  <div class="detail-content">
-                    <span>Based In</span>
-                    <strong>Greater Noida, Uttar Pradesh</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="100">
-                  <i class="bi bi-envelope"></i>
-                  <div class="detail-content">
-                    <span>Email</span>
-                    <strong>mr.vivek7009@gmail.com</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="150">
-                  <i class="bi bi-phone"></i>
-                  <div class="detail-content">
-                    <span>Phone</span>
-                    <strong>+91-9518057009</strong>
-                  </div>
-                </div>
-
-                <div class="detail-item" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bi bi-github"></i>
-                  <div class="detail-content">
-                    <span>GitHub</span>
-                    <strong>github.com/max-ashwin09</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skills-showcase" data-aos="fade-up" data-aos-delay="250">
-                <div class="section-tag">Core Skills</div>
-                <h3>Technical Proficiency</h3>
-
-                <div class="skills-list skills-animation">
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">Computer Networking (TCP/IP, OSI, Packet Analysis)</span>
-                      <span class="skill-percent">88%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">Core Cybersecurity &amp; Penetration Testing</span>
-                      <span class="skill-percent">85%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">Linux Administration &amp; Network Troubleshooting</span>
-                      <span class="skill-percent">88%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">Python &amp; Django (Full Stack Backend)</span>
-                      <span class="skill-percent">88%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">HTML, CSS, Bootstrap, JavaScript &amp; React</span>
-                      <span class="skill-percent">85%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">SQL / MySQL &amp; Database Security</span>
-                      <span class="skill-percent">80%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">NLP, ML, DL &amp; Neural Networks</span>
-                      <span class="skill-percent">75%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-
-                  <div class="skill-item">
-                    <div class="skill-info">
-                      <span class="skill-name">MS Office &amp; E-Commerce Operations (FBA)</span>
-                      <span class="skill-percent">90%</span>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="vcrypt-badge-pill" id="vcryptStatusBadge">
+            <i class="bi bi-shield-lock-fill"></i>
+            <span>Approval Required</span>
           </div>
         </div>
 
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Resume</span>
-        <h2>Resume</h2>
-        <p>Academic credentials, technical training, hands-on industry experience, and certifications in software
-          development, cybersecurity, and operations.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5">
-          <div class="col-lg-6">
-            <div class="experience-section">
-              <div class="section-header" data-aos="fade-right" data-aos-delay="200">
-                <div class="header-content">
-                  <span class="section-badge">Experience</span>
-                  <h2>Work &amp; Training Journey</h2>
-                  <p>Hands-on experience spanning Python &amp; Django Full Stack summer training, 3+ years in E-Commerce
-                    Operations (FBA), order management, Excel data entry, and cybercafe support.</p>
-                </div>
-              </div>
-
-              <div class="experience-cards">
-                <div class="exp-card featured" data-aos="zoom-in" data-aos-delay="300">
-                  <div class="card-header">
-                    <div class="company-logo">
-                      <i class="bi bi-laptop"></i>
-                    </div>
-                    <div class="period-badge">Training</div>
-                  </div>
-                  <div class="card-body">
-                    <h3>Full Stack Developer Summer Training (Python With Django)</h3>
-                    <p class="company-name">Techpile Technology Pvt. Ltd., Lucknow</p>
-                    <span class="duration">45 Days</span>
-                    <p class="description">Completed intensive 45-day summer training in full-stack web development
-                      using Python, Django, HTML, CSS, Bootstrap, JavaScript, and SQL.</p>
-                    <div class="skills-tags">
-                      <span class="skill-tag">Python</span>
-                      <span class="skill-tag">Django</span>
-                      <span class="skill-tag">SQL &amp; Frontend</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="exp-card" data-aos="zoom-in" data-aos-delay="350">
-                  <div class="card-header">
-                    <div class="company-logo">
-                      <i class="bi bi-buildings"></i>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <h3>E-Commerce Operations With FBA</h3>
-                    <p class="company-name">Flooring India Co., Panipat, Haryana</p>
-                    <span class="duration">3 Years 4 Months</span>
-                    <p class="description">Managed end-to-end E-Commerce operations with Fulfillment by Amazon (FBA),
-                      catalog maintenance, and operational workflows.</p>
-                  </div>
-                </div>
-
-                <div class="exp-card" data-aos="zoom-in" data-aos-delay="400">
-                  <div class="card-header">
-                    <div class="company-logo">
-                      <i class="bi bi-file-earmark-spreadsheet"></i>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <h3>Excel Data Entry</h3>
-                    <p class="company-name">Raymons Textile, Panipat, Haryana</p>
-                    <span class="duration">8 Months</span>
-                    <p class="description">Handled accurate Excel data entry, record keeping, and reporting using MS
-                      Office and basic computer applications.</p>
-                  </div>
-                </div>
-
-                <div class="exp-card" data-aos="zoom-in" data-aos-delay="450">
-                  <div class="card-header">
-                    <div class="company-logo">
-                      <i class="bi bi-bag-check"></i>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <h3>Order Management (Part-time)</h3>
-                    <p class="company-name">Blinkit</p>
-                    <span class="duration">4 Months</span>
-                    <p class="description">Managed part-time order processing, dispatch tracking, and operational
-                      coordination.</p>
-                  </div>
-                </div>
-
-                <div class="exp-card" data-aos="zoom-in" data-aos-delay="500">
-                  <div class="card-header">
-                    <div class="company-logo">
-                      <i class="bi bi-pc-display"></i>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <h3>Cybercafe Support</h3>
-                    <p class="company-name">S.S Communication, Panipat, Haryana</p>
-                    <span class="duration">2–3 Months</span>
-                    <p class="description">Provided system support, troubleshooting, online form assistance, and MS
-                      Office application support.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="education-section">
-              <div class="section-header" data-aos="fade-left" data-aos-delay="200">
-                <div class="header-content">
-                  <span class="section-badge">Education</span>
-                  <h2>Academic Background</h2>
-                  <p>Progressive academic track from High School Merit and CSE Diploma (First Division) to B.Tech in
-                    Computer Networks and Cybersecurity.</p>
-                </div>
-              </div>
-
-              <div class="education-timeline" data-aos="fade-left" data-aos-delay="300">
-                <div class="timeline-track">
-                  <div class="timeline-item">
-                    <div class="timeline-marker">
-                      <i class="bi bi-mortarboard-fill"></i>
-                    </div>
-                    <div class="timeline-content">
-                      <div class="education-meta">
-                        <span class="year-range">Pursuing</span>
-                        <span class="degree-level">B.Tech</span>
-                      </div>
-                      <h4>B.Tech in CSE (Computer Network and Cybersecurity)</h4>
-                      <p class="institution">Galgotias University, Greater Noida, Uttar Pradesh</p>
-                      <p class="description">Specializing in Computer Networks, Cybersecurity, and software engineering
-                        principles.</p>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-marker">
-                      <i class="bi bi-book"></i>
-                    </div>
-                    <div class="timeline-content">
-                      <div class="education-meta">
-                        <span class="year-range">2023 – 2025</span>
-                        <span class="degree-level">Diploma</span>
-                      </div>
-                      <h4>Diploma in Computer Science &amp; Engineering</h4>
-                      <p class="institution">Mahamaya Polytechnic of IT, Gorakhpur, Uttar Pradesh</p>
-                      <div class="achievement">
-                        <i class="bi bi-award"></i>
-                        <span>Percentage: 76.8% (Pass with First Division)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-marker">
-                      <i class="bi bi-journal-text"></i>
-                    </div>
-                    <div class="timeline-content">
-                      <div class="education-meta">
-                        <span class="year-range">2021 – 2022</span>
-                        <span class="degree-level">12th</span>
-                      </div>
-                      <h4>Intermediate (12th)</h4>
-                      <p class="institution">Govt. Model Sanskriti Sr. Sec. School, Panipat, Haryana</p>
-                      <div class="achievement">
-                        <i class="bi bi-award"></i>
-                        <span>Percentage: 67.4% (Pass with First Division)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-marker">
-                      <i class="bi bi-journal-check"></i>
-                    </div>
-                    <div class="timeline-content">
-                      <div class="education-meta">
-                        <span class="year-range">2019 – 2020</span>
-                        <span class="degree-level">10th</span>
-                      </div>
-                      <h4>High School (10th)</h4>
-                      <p class="institution">Swastik Bal Vikas Sr. Sec. School, Panipat, Haryana</p>
-                      <div class="achievement">
-                        <i class="bi bi-award"></i>
-                        <span>Percentage: 88.8% (Pass with MERIT)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-marker">
-                      <i class="bi bi-patch-check-fill"></i>
-                    </div>
-                    <div class="timeline-content">
-                      <div class="education-meta">
-                        <span class="year-range">Certifications</span>
-                        <span class="degree-level">Verified</span>
-                      </div>
-                      <h4>Certifications &amp; Workshops</h4>
-                      <div class="certifications-list">
-                        <div class="cert-item">
-                          <span class="cert-name">45 Days Training Certificate in Full Stack Developer — Techpile
-                            Technology, Lucknow</span>
-                          <span class="cert-year">45 Days</span>
-                        </div>
-                        <div class="cert-item">
-                          <span class="cert-name">Geo-data Sharing and Cyber Security — ISRO</span>
-                          <span class="cert-year">ISRO</span>
-                        </div>
-                        <div class="cert-item">
-                          <span class="cert-name">E-Commerce Operations Certificate — P.V.S Academy, Panipat</span>
-                          <span class="cert-year">P.V.S</span>
-                        </div>
-                        <div class="cert-item">
-                          <span class="cert-name">Excel &amp; Basic Computer Certificate — P.V.S Academy, Panipat</span>
-                          <span class="cert-year">P.V.S</span>
-                        </div>
-                        <div class="cert-item">
-                          <span class="cert-name">1–2 Week Certified Workshops on Frontend &amp; Backend (Python)
-                            Development</span>
-                          <span class="cert-year">1–2 Wks</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Services</span>
-        <h2>Focus Areas &amp; Skills</h2>
-        <p>Practical capabilities across Software Development, Python &amp; Django, AI/ML, Computer Networks &amp;
-          Cybersecurity, SQL, and E-Commerce Operations.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-diagram-3"></i>
-              </div>
-              <h4>Computer Networking</h4>
-              <p>TCP/IP &amp; OSI model, subnetting, DNS/DHCP, routing &amp; switching concepts, HTTP analysis, and
-                network troubleshooting.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item featured">
-              <div class="featured-tag">Core</div>
-              <div class="icon-wrapper">
-                <i class="bi bi-shield-lock"></i>
-              </div>
-              <h4>Core Cybersecurity</h4>
-              <p>Vulnerability assessment, penetration testing basics, network defense, OTP/auth security, and ISRO
-                Cyber Security certified.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-code-slash"></i>
-              </div>
-              <h4>Full Stack Development</h4>
-              <p>Production-ready web apps with Python, Django, Java Spring Boot, React, TypeScript, Bootstrap, and SQL.
-              </p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-terminal"></i>
-              </div>
-              <h4>Linux &amp; System Security</h4>
-              <p>Linux CLI administration, file permissions, firewall/port auditing, service monitoring, and shell
-                troubleshooting.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-cpu"></i>
-              </div>
-              <h4>AI, ML &amp; Risk Analytics</h4>
-              <p>NLP/ML task automation assistants, DeFi wallet risk scoring, and AI-powered smart search &amp; privacy
-                features.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-database"></i>
-              </div>
-              <h4>SQL &amp; Secure Databases</h4>
-              <p>Relational schema design, Raw JDBC/ORM data layers, query optimization, and authenticated CRUD
-                workflows.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-cart-check"></i>
-              </div>
-              <h4>E-Commerce &amp; FBA</h4>
-              <p>3+ years experience in Amazon FBA operations, order management, and catalog coordination.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="service-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-file-earmark-spreadsheet"></i>
-              </div>
-              <h4>MS Office &amp; Operations</h4>
-              <p>Certified in Excel &amp; Basic Computer applications with real-world data entry and technical support
-                experience.</p>
-              <a href="service-details.html" class="read-more">
-                <span>Explore</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row mt-5">
-          <div class="col-12" data-aos="fade-up" data-aos-delay="200">
-            <div class="cta-box">
-              <div class="row align-items-center">
-                <div class="col-lg-8">
-                  <h3>Open to Software Development &amp; Cybersecurity Roles</h3>
-                  <p>Continuously upgrading skills and ready to contribute through internships, projects, and technical
-                    roles.</p>
-                </div>
-                <div class="col-lg-4 text-lg-end text-center">
-                  <a href="#contact" class="cta-btn">Get In Touch</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Projects</span>
-        <h2>Featured Projects</h2>
-        <p>Major flagship software, enterprise banking, AI/ML, DeFi analytics, and Django full-stack projects from my
-          GitHub and academic work.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
-            <li data-filter="*" class="filter-active">All Projects</li>
-            <li data-filter=".filter-ai">AI &amp; FinTech Analytics</li>
-            <li data-filter=".filter-fullstack">Enterprise &amp; Full Stack</li>
-            <li data-filter=".filter-django">Django &amp; Security</li>
-          </ul>
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-sahaaye.jpg" alt="Project Sahaaye — AI Social Seva Platform"
-                    class="img-fluid" loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">AI &amp; Social Platform</span>
-                      <h4>Project Sahaaye</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-sahaaye.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Project Sahaaye image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="https://github.com/max-ashwin09/Project_Sahaaye" target="_blank"
-                        rel="noopener noreferrer" aria-label="View Project Sahaaye on GitHub">
-                        <i class="bi bi-github"></i>
-                      </a>
-                      <a href="portfolio-details.html#sahaaye" class="portfolio-details"
-                        aria-label="View Project Sahaaye details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">AI &amp; Web / Android</span>
-                  <h4 class="portfolio-title">Project Sahaaye</h4>
-                  <p class="portfolio-desc">AI-powered social seva platform with location-based discovery, smart search,
-                    AI category suggestions, photo/video reporting, and face blurring for privacy.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">TypeScript</span>
-                      <span class="tag">AI / Privacy</span>
-                      <span class="tag">Web &amp; Android</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="https://github.com/max-ashwin09/Project_Sahaaye" target="_blank"
-                        rel="noopener noreferrer" class="portfolio-repo-link"><i class="bi bi-github"></i> Repo</a>
-                      <a href="portfolio-details.html#sahaaye" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-fullstack">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-bharatbank.jpg" alt="Project BharatBank — Core Banking System"
-                    class="img-fluid" loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">Enterprise FinTech</span>
-                      <h4>Project BharatBank</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-bharatbank.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Project BharatBank image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="https://github.com/max-ashwin09/Project-BharatBank" target="_blank"
-                        rel="noopener noreferrer" aria-label="View Project BharatBank on GitHub">
-                        <i class="bi bi-github"></i>
-                      </a>
-                      <a href="portfolio-details.html#bharatbank" class="portfolio-details"
-                        aria-label="View Project BharatBank details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">Enterprise Core Banking</span>
-                  <h4 class="portfolio-title">BharatBank (BNB Core Banking)</h4>
-                  <p class="portfolio-desc">Enterprise Core Banking System engineered with Java 17 LTS, Spring Boot 3,
-                    Jakarta Servlets 6, Raw JDBC, React 19 SPA, and Tailwind CSS.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">Java 17</span>
-                      <span class="tag">Spring Boot 3</span>
-                      <span class="tag">React 19</span>
-                      <span class="tag">JDBC</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="https://github.com/max-ashwin09/Project-BharatBank" target="_blank"
-                        rel="noopener noreferrer" class="portfolio-repo-link"><i class="bi bi-github"></i> Repo</a>
-                      <a href="portfolio-details.html#bharatbank" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-ai-assistant.jpg" alt="Advanced Personal AI Assistant"
-                    class="img-fluid" loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">Python, NLP &amp; ML</span>
-                      <h4>Advanced Personal AI Assistant</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-ai-assistant.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Advanced Personal AI Assistant image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="https://github.com/max-ashwin09/Advanced-Personal-AI-Assistent" target="_blank"
-                        rel="noopener noreferrer" aria-label="View Advanced Personal AI Assistant on GitHub">
-                        <i class="bi bi-github"></i>
-                      </a>
-                      <a href="portfolio-details.html#ai-assistant" class="portfolio-details"
-                        aria-label="View Advanced Personal AI Assistant details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">Python &amp; AI Automation</span>
-                  <h4 class="portfolio-title">Advanced Personal AI Assistant</h4>
-                  <p class="portfolio-desc">AI assistant powered by NLP, ML, DL, and Neural Networks for app automation,
-                    content writing, image generation, real-time search, and chatbot responses.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">NLP / ML / DL</span>
-                      <span class="tag">Neural Networks</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="https://github.com/max-ashwin09/Advanced-Personal-AI-Assistent" target="_blank"
-                        rel="noopener noreferrer" class="portfolio-repo-link"><i class="bi bi-github"></i> Repo</a>
-                      <a href="portfolio-details.html#ai-assistant" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-aave-credit.jpg" alt="Aave DeFi Credit Score" class="img-fluid"
-                    loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">Python &amp; DeFi Risk</span>
-                      <h4>Aave Credit Score</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-aave-credit.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Aave Credit Score image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="https://github.com/max-ashwin09/aave-credit-score" target="_blank"
-                        rel="noopener noreferrer" aria-label="View Aave Credit Score on GitHub">
-                        <i class="bi bi-github"></i>
-                      </a>
-                      <a href="portfolio-details.html#aave-credit" class="portfolio-details"
-                        aria-label="View Aave Credit Score details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">Python &amp; DeFi Analytics</span>
-                  <h4 class="portfolio-title">Aave DeFi Credit Scoring</h4>
-                  <p class="portfolio-desc">Python wallet risk &amp; credit scoring analytics pipeline evaluating
-                    on-chain DeFi lending and repayment patterns across Aave protocol activity.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">DeFi Risk</span>
-                      <span class="tag">Credit Scoring</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="https://github.com/max-ashwin09/aave-credit-score" target="_blank"
-                        rel="noopener noreferrer" class="portfolio-repo-link"><i class="bi bi-github"></i> Repo</a>
-                      <a href="portfolio-details.html#aave-credit" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-django">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-helpdesk.jpg" alt="Smart Community Helpdesk" class="img-fluid"
-                    loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">Django &amp; Security</span>
-                      <h4>Smart Community Helpdesk</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-helpdesk.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Smart Community Helpdesk image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="https://github.com/max-ashwin09/helpdesk_webapp" target="_blank"
-                        rel="noopener noreferrer" aria-label="View Smart Community Helpdesk on GitHub">
-                        <i class="bi bi-github"></i>
-                      </a>
-                      <a href="portfolio-details.html#helpdesk" class="portfolio-details"
-                        aria-label="View Smart Community Helpdesk details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">Django &amp; OTP Security</span>
-                  <h4 class="portfolio-title">Smart Community Helpdesk</h4>
-                  <p class="portfolio-desc">Django knowledge-sharing &amp; helpdesk web app featuring OTP-verified
-                    login, AI-powered suggestions, search, file uploads, and role-based admin controls.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">Django</span>
-                      <span class="tag">OTP Auth</span>
-                      <span class="tag">AI Search</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="https://github.com/max-ashwin09/helpdesk_webapp" target="_blank"
-                        rel="noopener noreferrer" class="portfolio-repo-link"><i class="bi bi-github"></i> Repo</a>
-                      <a href="portfolio-details.html#helpdesk" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-django">
-              <div class="portfolio-card">
-                <div class="portfolio-image-container">
-                  <img src="assets/img/portfolio/project-restaurant.jpg" alt="Restaurant Management System"
-                    class="img-fluid" loading="lazy">
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <span class="project-category">Full Stack Django</span>
-                      <h4>Restaurant Management System</h4>
-                    </div>
-                    <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/project-restaurant.jpg" class="glightbox portfolio-link"
-                        aria-label="Preview Restaurant Management System image">
-                        <i class="bi bi-plus-lg"></i>
-                      </a>
-                      <a href="portfolio-details.html#restaurant" class="portfolio-details"
-                        aria-label="View Restaurant Management System details">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="portfolio-body">
-                  <span class="portfolio-category-badge">Full Stack Web</span>
-                  <h4 class="portfolio-title">Restaurant Management System</h4>
-                  <p class="portfolio-desc">Web-based management system for orders, inventory, and customer workflows
-                    with secure authentication built on Python, Django, Bootstrap, and SQL.</p>
-                  <div class="portfolio-meta">
-                    <div class="project-tags">
-                      <span class="tag">Python</span>
-                      <span class="tag">Django</span>
-                      <span class="tag">Bootstrap</span>
-                      <span class="tag">SQL</span>
-                    </div>
-                    <div class="portfolio-links-group">
-                      <a href="portfolio-details.html#restaurant" class="portfolio-details-link">Details <i
-                          class="bi bi-arrow-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="portfolio-bottom" data-aos="fade-up" data-aos-delay="400">
-          <div class="row align-items-center">
-            <div class="col-lg-8">
-              <h3>Additional Projects on GitHub</h3>
-              <p>More repositories, experiments, and code samples are available on my GitHub profile.</p>
-            </div>
-            <div class="col-lg-4 text-lg-end">
-              <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer"
-                class="btn btn-accent">Visit GitHub Profile</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Portfolio Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Contact</span>
-        <h2>Contact</h2>
-        <p>Passionate CSE diploma graduate &amp; B.Tech Computer Network and Cybersecurity student skilled in Python,
-          Django, SQL, AI/ML, and E-Commerce Operations. Reach out for opportunities or collaboration.</p>
+        <h1 id="vcryptGateTitle" class="vcrypt-gate-title">Protected Portfolio</h1>
+        <p id="vcryptGateSubtitle" class="vcrypt-gate-subtitle">
+          Content is hidden and encrypted behind a blur gate. Submit a quick access request — once the owner approves, this page will unlock automatically.
         </p>
-      </div><!-- End Section Title -->
 
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-geo-alt"></i>
-              </div>
-              <div>
-                <h3>Address</h3>
-                <p>Greater Noida , Uttar Pradesh </p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-telephone"></i>
-              </div>
-              <div>
-                <h3>Call Me</h3>
-                <p>+91 9518057009</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="icon-wrapper">
-                <i class="bi bi-envelope"></i>
-              </div>
-              <div>
-                <h3>Email Me</h3>
-                <p>mr.vivek7009@gmail.com</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="portfolio-contact-form"
-              data-fallback-email="mr.vivek7009@gmail.com">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div>
-
+        <!-- Checking existing session state -->
+        <div id="vcryptLoadingState" class="vcrypt-state-box">
+          <div class="vcrypt-spinner" aria-hidden="true"></div>
+          <p class="mb-0">Checking authorization status...</p>
         </div>
 
-      </div>
+        <!-- Request to View Form -->
+        <form id="vcryptRequestForm" class="vcrypt-request-form" hidden>
+          <div class="vcrypt-field-row">
+            <div class="vcrypt-field">
+              <label for="reqName">Your Name <span class="text-danger">*</span></label>
+              <input id="reqName" name="name" type="text" placeholder="e.g., Rahul Sharma" required maxlength="80" autocomplete="name">
+            </div>
+            <div class="vcrypt-field">
+              <label for="reqEmail">Email Address <span class="text-danger">*</span></label>
+              <input id="reqEmail" name="email" type="email" placeholder="you@example.com" required maxlength="120" autocomplete="email">
+            </div>
+          </div>
 
-    </section><!-- /Contact Section -->
+          <div class="vcrypt-field">
+            <label for="reqPurpose">Purpose <span class="text-danger">*</span></label>
+            <select id="reqPurpose" name="purpose" required>
+              <option value="Recruiter / Hiring Review">Recruiter / Hiring Review</option>
+              <option value="Client / Freelance Inquiry">Client / Freelance Inquiry</option>
+              <option value="Collaboration / Tech Review">Collaboration / Tech Review</option>
+              <option value="General Portfolio View">General Portfolio View</option>
+            </select>
+          </div>
 
-  </main>
+          <div class="vcrypt-field">
+            <label for="reqReason">Message / Why do you want access? <span class="text-danger">*</span></label>
+            <textarea id="reqReason" name="reason" rows="2" placeholder="Briefly describe why you'd like to view this portfolio..." required maxlength="400"></textarea>
+          </div>
 
-  <footer id="footer" class="footer">
+          <div id="vcryptFormError" class="vcrypt-alert vcrypt-alert-error" hidden></div>
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Vivek</span>
-          </a>
-          <p>B.Tech CSE student specializing in Computer Networks &amp; Cybersecurity, passionate about full-stack
-            Python/Django development and secure digital solutions.</p>
-          <div class="social-links d-flex mt-4">
-            <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-                class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer"
-              aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="mailto:mr.vivek7009@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+          <button type="submit" id="vcryptSubmitBtn" class="vcrypt-primary-btn">
+            <i class="bi bi-send-check"></i>
+            <span>Request to View</span>
+          </button>
+        </form>
+
+        <!-- Pending / Rejected / Revoked / Configuration Error Status Panel -->
+        <div id="vcryptStatusPanel" class="vcrypt-status-panel" hidden>
+          <div class="vcrypt-status-card">
+            <div class="vcrypt-status-icon" id="vcryptPanelIcon">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <h2 id="vcryptPanelHeading" class="vcrypt-panel-heading">Waiting for Owner Approval</h2>
+            <p id="vcryptPanelMessage" class="vcrypt-panel-message">
+              Your request has been submitted. Keep this tab open or return later — access will unlock automatically as soon as approved.
+            </p>
+            <div id="vcryptRequestMeta" class="vcrypt-request-meta"></div>
+          </div>
+
+          <div class="vcrypt-panel-actions">
+            <button type="button" id="vcryptCheckBtn" class="vcrypt-primary-btn">
+              <i class="bi bi-arrow-clockwise"></i>
+              <span>Check Approval Status</span>
+            </button>
+            <button type="button" id="vcryptNewRequestBtn" class="vcrypt-secondary-btn">
+              <i class="bi bi-pencil-square"></i>
+              <span>Send Different Request</span>
+            </button>
           </div>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="terms.html">Terms of service</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-          </ul>
+        <div class="vcrypt-gate-footer">
+          <span><i class="bi bi-lock-fill"></i> AES-256-GCM Encrypted Content</span>
+          <a href="admin.html" class="vcrypt-admin-link"><i class="bi bi-person-badge"></i> Owner Admin</a>
         </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#services">Network &amp; Cybersecurity</a></li>
-            <li><a href="#services">Full Stack Development</a></li>
-            <li><a href="#services">Python &amp; Django</a></li>
-            <li><a href="#services">E-Commerce Operations</a></li>
-            <li><a href="#services">Linux &amp; MySQL</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>Greater Noida</p>
-          <p>Uttar Pradesh</p>
-          <p>India</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+91 9518057009</span></p>
-          <p><strong>Email:</strong> <span>mr.vivek7009@gmail.com</span></p>
-        </div>
-
       </div>
     </div>
+  </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Vivek</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer">MR Vivek</a> | <a
-          href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
+  <!-- Owner floating toolbar shown only when viewing as authenticated Admin -->
+  <div id="vcrypt-owner-bar" class="vcrypt-owner-bar" hidden>
+    <span><i class="bi bi-shield-check"></i> Unlocked via Owner Session</span>
+    <div class="vcrypt-owner-actions">
+      <a href="admin.html" class="vcrypt-owner-btn">Admin Console</a>
+      <button type="button" id="vcryptPreviewLockBtn" class="vcrypt-owner-btn ghost">Preview Blur Gate</button>
     </div>
-
-  </footer>
+  </div>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -1231,8 +211,10 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Main & Access Gate Scripts -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/gate-config.js"></script>
+  <script type="module" src="assets/js/access-gate.js"></script>
 
 </body>
 

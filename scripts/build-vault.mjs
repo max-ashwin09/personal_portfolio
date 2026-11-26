@@ -1,0 +1,367 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '..');
+const SRC_DIR = path.join(ROOT_DIR, 'src-pages');
+const DATA_DIR = path.join(ROOT_DIR, 'assets', 'data');
+const GATE_DATA_DIR = path.join(ROOT_DIR, '.gate-data');
+const VAULT_KEY_PATH = path.join(GATE_DATA_DIR, 'vault-key.json');
+const VAULT_OUT_PATH = path.join(DATA_DIR, 'vault.enc.json');
+
+const PROTECTED_PAGES = [
+  'index.html',
+  'portfolio-details.html',
+  'service-details.html',
+  'privacy.html',
+  'terms.html',
+  'starter-page.html',
+];
+
+function ensureDir(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
+}
+
+function getOrCreateVaultKey() {
+  ensureDir(GATE_DATA_DIR);
+  if (fs.existsSync(VAULT_KEY_PATH)) {
+    const existing = JSON.parse(fs.readFileSync(VAULT_KEY_PATH, 'utf8'));
+    if (existing && typeof existing.keyBase64 === 'string') {
+      const buf = Buffer.from(existing.keyBase64, 'base64');
+      if (buf.length === 32) {
+        return buf;
+      }
+    }
+  }
+
+  const keyBytes = crypto.randomBytes(32);
+  fs.writeFileSync(
+    VAULT_KEY_PATH,
+    JSON.stringify(
+      {
+        alg: 'AES-256-GCM',
+        keyBase64: keyBytes.toString('base64'),
+        createdAt: new Date().toISOString(),
+      },
+      null,
+      2
+    ),
+    { mode: 0o600 }
+  );
+  return keyBytes;
+}
+
+function extractPagePayload(fileName, html) {
+  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
+  const bodyMatch = html.match(/<body([^>]*)>/i);
+  if (!titleMatch || !bodyMatch) {
+    throw new Error(`Missing <title> or <body> in ${fileName}`);
+  }
+
+  const bodyClassMatch = bodyMatch[1].match(/class="([^"]*)"/i);
+  const bodyClass = bodyClassMatch ? bodyClassMatch[1].trim() : '';
+
+  const headerStart = html.indexOf('<header id="header"');
+  const footerEndMarker = '</footer>';
+  const footerEndIdx = html.lastIndexOf(footerEndMarker);
+
+  if (headerStart === -1 || footerEndIdx === -1) {
+    throw new Error(`Could not locate <header id="header"> ... </footer> bounds in ${fileName}`);
+  }
+
+  const contentHtml = html.slice(headerStart, footerEndIdx + footerEndMarker.length).trim();
+  if (!contentHtml.includes('<main')) {
+    throw new Error(`Extracted content for ${fileName} does not contain <main>`);
+  }
+
+  return {
+    title: titleMatch[1].trim(),
+    bodyClass,
+    contentHtml,
+  };
+}
+
+function buildLockedHtmlShell(fileName) {
+  const labelMap = {
+    'index.html': 'Portfolio Access Required',
+    'portfolio-details.html': 'Project Details — Access Required',
+    'service-details.html': 'Service Details — Access Required',
+    'privacy.html': 'Privacy Notice — Access Required',
+    'terms.html': 'Terms — Access Required',
+    'starter-page.html': 'Page — Access Required',
+  };
+
+  const title = labelMap[fileName] || 'Protected Portfolio — Access Required';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="robots" content="noindex, nofollow">
+  <title>${title}</title>
+  <meta name="description" content="Approval-protected portfolio workspace. Request owner permission to view content.">
+
+  <!-- Favicons -->
+  <link href="assets/img/vcrypt-icon.svg?v=2" rel="icon" type="image/svg+xml">
+  <link href="assets/img/favicon.png?v=2" rel="icon" sizes="64x64" type="image/png">
+  <link href="assets/img/apple-touch-icon.png?v=2" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Initialize system theme early to prevent flash of unstyled content -->
+  <script>
+    (function () {
+      try {
+        var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Main & Access Gate CSS Files -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/gate.css" rel="stylesheet">
+</head>
+
+<body class="gate-locked-body" data-gate-page="${fileName}">
+
+  <!-- Decrypted portfolio DOM is injected here only after owner approval -->
+  <div id="vcrypt-unlocked-root" hidden></div>
+
+  <!-- Redacted Blurred Wireframe Preview + Request Access Overlay (zero sensitive data in locked DOM) -->
+  <div id="vcrypt-gate-stage" class="vcrypt-gate-stage">
+    <div class="vcrypt-blurred-backdrop" aria-hidden="true">
+      <div class="vcrypt-fake-navbar">
+        <div class="vcrypt-skel vcrypt-skel-brand"></div>
+        <div class="vcrypt-fake-navlinks">
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-cta"></span>
+        </div>
+      </div>
+
+      <div class="vcrypt-fake-hero">
+        <div class="vcrypt-hero-glow"></div>
+        <div class="vcrypt-skel vcrypt-skel-pill"></div>
+        <div class="vcrypt-skel vcrypt-skel-title"></div>
+        <div class="vcrypt-skel vcrypt-skel-subtitle"></div>
+        <div class="vcrypt-fake-chips">
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+        </div>
+      </div>
+
+      <div class="vcrypt-fake-grid">
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcrypt-frosted-veil" role="dialog" aria-modal="true" aria-labelledby="vcryptGateTitle">
+      <div class="vcrypt-gate-card">
+        <div class="vcrypt-gate-header">
+          <div class="vcrypt-brand-emblem">
+            <img src="assets/img/vcrypt-icon.svg?v=2" alt="VCRYPT Shield" width="38" height="38">
+          </div>
+          <div class="vcrypt-badge-pill" id="vcryptStatusBadge">
+            <i class="bi bi-shield-lock-fill"></i>
+            <span>Approval Required</span>
+          </div>
+        </div>
+
+        <h1 id="vcryptGateTitle" class="vcrypt-gate-title">Protected Portfolio</h1>
+        <p id="vcryptGateSubtitle" class="vcrypt-gate-subtitle">
+          Content is hidden and encrypted behind a blur gate. Submit a quick access request — once the owner approves, this page will unlock automatically.
+        </p>
+
+        <!-- Checking existing session state -->
+        <div id="vcryptLoadingState" class="vcrypt-state-box">
+          <div class="vcrypt-spinner" aria-hidden="true"></div>
+          <p class="mb-0">Checking authorization status...</p>
+        </div>
+
+        <!-- Request to View Form -->
+        <form id="vcryptRequestForm" class="vcrypt-request-form" hidden>
+          <div class="vcrypt-field-row">
+            <div class="vcrypt-field">
+              <label for="reqName">Your Name <span class="text-danger">*</span></label>
+              <input id="reqName" name="name" type="text" placeholder="e.g., Rahul Sharma" required maxlength="80" autocomplete="name">
+            </div>
+            <div class="vcrypt-field">
+              <label for="reqEmail">Email Address <span class="text-danger">*</span></label>
+              <input id="reqEmail" name="email" type="email" placeholder="you@example.com" required maxlength="120" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="vcrypt-field">
+            <label for="reqPurpose">Purpose <span class="text-danger">*</span></label>
+            <select id="reqPurpose" name="purpose" required>
+              <option value="Recruiter / Hiring Review">Recruiter / Hiring Review</option>
+              <option value="Client / Freelance Inquiry">Client / Freelance Inquiry</option>
+              <option value="Collaboration / Tech Review">Collaboration / Tech Review</option>
+              <option value="General Portfolio View">General Portfolio View</option>
+            </select>
+          </div>
+
+          <div class="vcrypt-field">
+            <label for="reqReason">Message / Why do you want access? <span class="text-danger">*</span></label>
+            <textarea id="reqReason" name="reason" rows="2" placeholder="Briefly describe why you'd like to view this portfolio..." required maxlength="400"></textarea>
+          </div>
+
+          <div id="vcryptFormError" class="vcrypt-alert vcrypt-alert-error" hidden></div>
+
+          <button type="submit" id="vcryptSubmitBtn" class="vcrypt-primary-btn">
+            <i class="bi bi-send-check"></i>
+            <span>Request to View</span>
+          </button>
+        </form>
+
+        <!-- Pending / Rejected / Revoked / Configuration Error Status Panel -->
+        <div id="vcryptStatusPanel" class="vcrypt-status-panel" hidden>
+          <div class="vcrypt-status-card">
+            <div class="vcrypt-status-icon" id="vcryptPanelIcon">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <h2 id="vcryptPanelHeading" class="vcrypt-panel-heading">Waiting for Owner Approval</h2>
+            <p id="vcryptPanelMessage" class="vcrypt-panel-message">
+              Your request has been submitted. Keep this tab open or return later — access will unlock automatically as soon as approved.
+            </p>
+            <div id="vcryptRequestMeta" class="vcrypt-request-meta"></div>
+          </div>
+
+          <div class="vcrypt-panel-actions">
+            <button type="button" id="vcryptCheckBtn" class="vcrypt-primary-btn">
+              <i class="bi bi-arrow-clockwise"></i>
+              <span>Check Approval Status</span>
+            </button>
+            <button type="button" id="vcryptNewRequestBtn" class="vcrypt-secondary-btn">
+              <i class="bi bi-pencil-square"></i>
+              <span>Send Different Request</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="vcrypt-gate-footer">
+          <span><i class="bi bi-lock-fill"></i> AES-256-GCM Encrypted Content</span>
+          <a href="admin.html" class="vcrypt-admin-link"><i class="bi bi-person-badge"></i> Owner Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Owner floating toolbar shown only when viewing as authenticated Admin -->
+  <div id="vcrypt-owner-bar" class="vcrypt-owner-bar" hidden>
+    <span><i class="bi bi-shield-check"></i> Unlocked via Owner Session</span>
+    <div class="vcrypt-owner-actions">
+      <a href="admin.html" class="vcrypt-owner-btn">Admin Console</a>
+      <button type="button" id="vcryptPreviewLockBtn" class="vcrypt-owner-btn ghost">Preview Blur Gate</button>
+    </div>
+  </div>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main & Access Gate Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/gate-config.js"></script>
+  <script type="module" src="assets/js/access-gate.js"></script>
+
+</body>
+
+</html>
+`;
+}
+
+function main() {
+  ensureDir(DATA_DIR);
+
+  const pages = {};
+  for (const fileName of PROTECTED_PAGES) {
+    const srcPath = path.join(SRC_DIR, fileName);
+    if (!fs.existsSync(srcPath)) {
+      throw new Error(`Missing source page ${srcPath}`);
+    }
+    const html = fs.readFileSync(srcPath, 'utf8');
+    pages[fileName] = extractPagePayload(fileName, html);
+  }
+
+  const keyBytes = getOrCreateVaultKey();
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv('aes-256-gcm', keyBytes, iv);
+  const plaintext = Buffer.from(JSON.stringify({ version: 1, builtAt: new Date().toISOString(), pages }), 'utf8');
+  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+  const combined = Buffer.concat([ciphertext, authTag]);
+
+  fs.writeFileSync(
+    VAULT_OUT_PATH,
+    JSON.stringify(
+      {
+        version: 1,
+        alg: 'AES-256-GCM',
+        iv: iv.toString('base64'),
+        data: combined.toString('base64'),
+        pageList: PROTECTED_PAGES,
+      },
+      null,
+      2
+    )
+  );
+
+  for (const fileName of PROTECTED_PAGES) {
+    const outPath = path.join(ROOT_DIR, fileName);
+    fs.writeFileSync(outPath, buildLockedHtmlShell(fileName), 'utf8');
+  }
+
+  console.log(`Encrypted ${PROTECTED_PAGES.length} pages -> ${path.relative(ROOT_DIR, VAULT_OUT_PATH)} (${plaintext.length} bytes plaintext)`);
+}
+
+main();

@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Starter Page - MR Vivek</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Page — Access Required</title>
+  <meta name="description" content="Approval-protected portfolio workspace. Request owner permission to view content.">
 
   <!-- Favicons -->
   <link href="assets/img/vcrypt-icon.svg?v=2" rel="icon" type="image/svg+xml">
@@ -16,7 +16,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,138 +37,165 @@
     })();
   </script>
 
-  <!-- Main CSS File -->
+  <!-- Main & Access Gate CSS Files -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Craftivo
-  * Template URL: https://bootstrapmade.com/craftivo-bootstrap-portfolio-template/
-  * Updated: Oct 04 2025 with Bootstrap v5.3.8
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link href="assets/css/gate.css" rel="stylesheet">
 </head>
 
-<body class="starter-page-page">
+<body class="gate-locked-body" data-gate-page="starter-page.html">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <!-- Decrypted portfolio DOM is injected here only after owner approval -->
+  <div id="vcrypt-unlocked-root" hidden></div>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">MR Vivek</h1>
-      </a>
+  <!-- Redacted Blurred Wireframe Preview + Request Access Overlay (zero sensitive data in locked DOM) -->
+  <div id="vcrypt-gate-stage" class="vcrypt-gate-stage">
+    <div class="vcrypt-blurred-backdrop" aria-hidden="true">
+      <div class="vcrypt-fake-navbar">
+        <div class="vcrypt-skel vcrypt-skel-brand"></div>
+        <div class="vcrypt-fake-navlinks">
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-link"></span>
+          <span class="vcrypt-skel vcrypt-skel-cta"></span>
+        </div>
+      </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html#hero">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#resume">Resume</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#portfolio">Portfolio</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      <div class="vcrypt-fake-hero">
+        <div class="vcrypt-hero-glow"></div>
+        <div class="vcrypt-skel vcrypt-skel-pill"></div>
+        <div class="vcrypt-skel vcrypt-skel-title"></div>
+        <div class="vcrypt-skel vcrypt-skel-subtitle"></div>
+        <div class="vcrypt-fake-chips">
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+          <span class="vcrypt-skel vcrypt-skel-chip"></span>
+        </div>
+      </div>
 
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
-
+      <div class="vcrypt-fake-grid">
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+        <div class="vcrypt-fake-card">
+          <div class="vcrypt-skel vcrypt-skel-thumb"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-75"></div>
+          <div class="vcrypt-skel vcrypt-skel-line w-50"></div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div><!-- End Page Title -->
-
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Starter Section</span>
-        <h2>Starter Section</h2>
-        <p>Reusable page template for MR Vivek's personal portfolio.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up">
-        <p>Use this page as a starter for your own custom pages.</p>
-      </div>
-
-    </section><!-- /Starter Section Section -->
-
-  </main>
-
-  <footer id="footer" class="footer">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Vivek</span>
-          </a>
-          <p>B.Tech CSE student specializing in Computer Networks &amp; Cybersecurity, passionate about full-stack Python/Django development and secure digital solutions.</p>
-          <div class="social-links d-flex mt-4">
-            <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="mailto:mr.vivek7009@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+    <div class="vcrypt-frosted-veil" role="dialog" aria-modal="true" aria-labelledby="vcryptGateTitle">
+      <div class="vcrypt-gate-card">
+        <div class="vcrypt-gate-header">
+          <div class="vcrypt-brand-emblem">
+            <img src="assets/img/vcrypt-icon.svg?v=2" alt="VCRYPT Shield" width="38" height="38">
+          </div>
+          <div class="vcrypt-badge-pill" id="vcryptStatusBadge">
+            <i class="bi bi-shield-lock-fill"></i>
+            <span>Approval Required</span>
           </div>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="index.html#hero">Home</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="terms.html">Terms of service</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-          </ul>
+        <h1 id="vcryptGateTitle" class="vcrypt-gate-title">Protected Portfolio</h1>
+        <p id="vcryptGateSubtitle" class="vcrypt-gate-subtitle">
+          Content is hidden and encrypted behind a blur gate. Submit a quick access request — once the owner approves, this page will unlock automatically.
+        </p>
+
+        <!-- Checking existing session state -->
+        <div id="vcryptLoadingState" class="vcrypt-state-box">
+          <div class="vcrypt-spinner" aria-hidden="true"></div>
+          <p class="mb-0">Checking authorization status...</p>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="index.html#services">Network &amp; Cybersecurity</a></li>
-            <li><a href="index.html#services">Full Stack Development</a></li>
-            <li><a href="index.html#services">Python &amp; Django</a></li>
-            <li><a href="index.html#services">E-Commerce Operations</a></li>
-            <li><a href="index.html#services">Linux &amp; MySQL</a></li>
-          </ul>
+        <!-- Request to View Form -->
+        <form id="vcryptRequestForm" class="vcrypt-request-form" hidden>
+          <div class="vcrypt-field-row">
+            <div class="vcrypt-field">
+              <label for="reqName">Your Name <span class="text-danger">*</span></label>
+              <input id="reqName" name="name" type="text" placeholder="e.g., Rahul Sharma" required maxlength="80" autocomplete="name">
+            </div>
+            <div class="vcrypt-field">
+              <label for="reqEmail">Email Address <span class="text-danger">*</span></label>
+              <input id="reqEmail" name="email" type="email" placeholder="you@example.com" required maxlength="120" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="vcrypt-field">
+            <label for="reqPurpose">Purpose <span class="text-danger">*</span></label>
+            <select id="reqPurpose" name="purpose" required>
+              <option value="Recruiter / Hiring Review">Recruiter / Hiring Review</option>
+              <option value="Client / Freelance Inquiry">Client / Freelance Inquiry</option>
+              <option value="Collaboration / Tech Review">Collaboration / Tech Review</option>
+              <option value="General Portfolio View">General Portfolio View</option>
+            </select>
+          </div>
+
+          <div class="vcrypt-field">
+            <label for="reqReason">Message / Why do you want access? <span class="text-danger">*</span></label>
+            <textarea id="reqReason" name="reason" rows="2" placeholder="Briefly describe why you'd like to view this portfolio..." required maxlength="400"></textarea>
+          </div>
+
+          <div id="vcryptFormError" class="vcrypt-alert vcrypt-alert-error" hidden></div>
+
+          <button type="submit" id="vcryptSubmitBtn" class="vcrypt-primary-btn">
+            <i class="bi bi-send-check"></i>
+            <span>Request to View</span>
+          </button>
+        </form>
+
+        <!-- Pending / Rejected / Revoked / Configuration Error Status Panel -->
+        <div id="vcryptStatusPanel" class="vcrypt-status-panel" hidden>
+          <div class="vcrypt-status-card">
+            <div class="vcrypt-status-icon" id="vcryptPanelIcon">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <h2 id="vcryptPanelHeading" class="vcrypt-panel-heading">Waiting for Owner Approval</h2>
+            <p id="vcryptPanelMessage" class="vcrypt-panel-message">
+              Your request has been submitted. Keep this tab open or return later — access will unlock automatically as soon as approved.
+            </p>
+            <div id="vcryptRequestMeta" class="vcrypt-request-meta"></div>
+          </div>
+
+          <div class="vcrypt-panel-actions">
+            <button type="button" id="vcryptCheckBtn" class="vcrypt-primary-btn">
+              <i class="bi bi-arrow-clockwise"></i>
+              <span>Check Approval Status</span>
+            </button>
+            <button type="button" id="vcryptNewRequestBtn" class="vcrypt-secondary-btn">
+              <i class="bi bi-pencil-square"></i>
+              <span>Send Different Request</span>
+            </button>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>Greater Noida</p>
-          <p>Uttar Pradesh</p>
-          <p>India</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+91 9518057009</span></p>
-          <p><strong>Email:</strong> <span>mr.vivek7009@gmail.com</span></p>
+        <div class="vcrypt-gate-footer">
+          <span><i class="bi bi-lock-fill"></i> AES-256-GCM Encrypted Content</span>
+          <a href="admin.html" class="vcrypt-admin-link"><i class="bi bi-person-badge"></i> Owner Admin</a>
         </div>
-
       </div>
     </div>
+  </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Vivek</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://github.com/max-ashwin09" target="_blank" rel="noopener noreferrer">MR Vivek</a> | <a href="https://www.linkedin.com/in/vivekknnujiya009" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
+  <!-- Owner floating toolbar shown only when viewing as authenticated Admin -->
+  <div id="vcrypt-owner-bar" class="vcrypt-owner-bar" hidden>
+    <span><i class="bi bi-shield-check"></i> Unlocked via Owner Session</span>
+    <div class="vcrypt-owner-actions">
+      <a href="admin.html" class="vcrypt-owner-btn">Admin Console</a>
+      <button type="button" id="vcryptPreviewLockBtn" class="vcrypt-owner-btn ghost">Preview Blur Gate</button>
     </div>
-
-  </footer>
+  </div>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -182,8 +211,10 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Main & Access Gate Scripts -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/gate-config.js"></script>
+  <script type="module" src="assets/js/access-gate.js"></script>
 
 </body>
 

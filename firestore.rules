@@ -1,0 +1,67 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return isSignedIn()
+        && request.auth.token.email == "mr.vivek7009@gmail.com"
+        && request.auth.token.email_verified == true
+        && request.auth.token.firebase.sign_in_provider != "anonymous";
+    }
+
+    function isApprovedVisitor() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/access_requests/$(request.auth.uid))
+        && get(/databases/$(database)/documents/access_requests/$(request.auth.uid)).data.status == "approved";
+    }
+
+    // Access requests keyed by Firebase Auth UID
+    match /access_requests/{visitorId} {
+      // Visitors can read only their own request; owner can inspect all requests
+      allow get: if isOwner() || (isSignedIn() && request.auth.uid == visitorId);
+      allow list: if isOwner();
+
+      // Visitor submits initial request strictly with status == "pending"
+      allow create: if isSignedIn()
+        && request.auth.uid == visitorId
+        && request.resource.data.status == "pending"
+        && request.resource.data.uid == visitorId
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.email is string
+        && request.resource.data.email.size() >= 5
+        && request.resource.data.email.size() <= 120
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() >= 3
+        && request.resource.data.reason.size() <= 400;
+
+      // Visitor can only update notes while still pending (cannot self-approve);
+      // verified owner can approve, reject, revoke, or delete
+      allow update: if isOwner()
+        || (
+          isSignedIn()
+          && request.auth.uid == visitorId
+          && resource.data.status == "pending"
+          && request.resource.data.status == "pending"
+          && request.resource.data.uid == visitorId
+          && request.resource.data.name is string
+          && request.resource.data.email is string
+          && request.resource.data.reason is string
+        );
+
+      allow delete: if isOwner();
+    }
+
+    // AES-256-GCM decryption key released ONLY to verified owner or approved visitors
+    match /vault_secrets/{docId} {
+      allow get: if isOwner() || isApprovedVisitor();
+      allow list: if false;
+      allow write: if isOwner();
+    }
+  }
+}

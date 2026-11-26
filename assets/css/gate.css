@@ -1,0 +1,561 @@
+/*--------------------------------------------------------------
+# VCRYPT Access Gate & Blurred Redacted Preview Styles
+--------------------------------------------------------------*/
+.gate-locked-body {
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+
+.vcrypt-gate-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--background-color);
+}
+
+.vcrypt-gate-stage[hidden] {
+  display: none !important;
+}
+
+/* Blurred Wireframe Preview Backdrop */
+.vcrypt-blurred-backdrop {
+  position: absolute;
+  inset: -24px;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(18px) saturate(1.1);
+  transform: scale(1.04);
+  opacity: 0.72;
+  background:
+    radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--accent-color), transparent 76%), transparent 45%),
+    radial-gradient(circle at 82% 76%, rgba(56, 189, 248, 0.14), transparent 48%),
+    var(--background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 64px;
+}
+
+.vcrypt-fake-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-color), transparent 15%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.vcrypt-fake-navlinks {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.vcrypt-skel {
+  display: block;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--heading-color), transparent 84%);
+}
+
+.vcrypt-skel-brand {
+  width: 140px;
+  height: 22px;
+  background: color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+.vcrypt-skel-link {
+  width: 68px;
+  height: 12px;
+}
+
+.vcrypt-skel-cta {
+  width: 112px;
+  height: 36px;
+  background: color-mix(in srgb, var(--accent-color), transparent 42%);
+}
+
+.vcrypt-fake-hero {
+  position: relative;
+  border-radius: 24px;
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  background: color-mix(in srgb, var(--surface-color), transparent 22%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.vcrypt-skel-pill {
+  width: 190px;
+  height: 24px;
+  background: color-mix(in srgb, var(--accent-color), transparent 65%);
+}
+
+.vcrypt-skel-title {
+  width: min(520px, 85%);
+  height: 46px;
+  border-radius: 14px;
+}
+
+.vcrypt-skel-subtitle {
+  width: min(640px, 92%);
+  height: 20px;
+}
+
+.vcrypt-fake-chips {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.vcrypt-skel-chip {
+  width: 110px;
+  height: 34px;
+}
+
+.vcrypt-fake-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.vcrypt-fake-card {
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: color-mix(in srgb, var(--surface-color), transparent 20%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.vcrypt-skel-thumb {
+  width: 100%;
+  height: 150px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-color), transparent 72%),
+    color-mix(in srgb, var(--heading-color), transparent 86%)
+  );
+}
+
+.vcrypt-skel-line {
+  height: 14px;
+}
+
+.vcrypt-skel-line.w-75 {
+  width: 75%;
+}
+
+.vcrypt-skel-line.w-50 {
+  width: 50%;
+}
+
+/* Frosted Overlay & Modal Card */
+.vcrypt-frosted-veil {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.vcrypt-gate-card {
+  width: 100%;
+  max-width: 540px;
+  border-radius: 22px;
+  padding: 28px;
+  background: color-mix(in srgb, var(--surface-color), transparent 8%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 82%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .vcrypt-gate-card {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+.vcrypt-gate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.vcrypt-brand-emblem {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 68%);
+}
+
+.vcrypt-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 72%);
+}
+
+.vcrypt-badge-pill.is-pending {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.vcrypt-badge-pill.is-rejected {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.vcrypt-badge-pill.is-approved {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.vcrypt-gate-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--heading-color);
+}
+
+.vcrypt-gate-subtitle {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 20px;
+  color: color-mix(in srgb, var(--default-color), transparent 18%);
+}
+
+.vcrypt-state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 16px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--background-color), transparent 35%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 86%);
+  color: var(--default-color);
+}
+
+.vcrypt-state-box[hidden],
+.vcrypt-request-form[hidden],
+.vcrypt-status-panel[hidden] {
+  display: none !important;
+}
+
+.vcrypt-spinner {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid color-mix(in srgb, var(--accent-color), transparent 78%);
+  border-top-color: var(--accent-color);
+  animation: vcrypt-spin 0.8s linear infinite;
+}
+
+@keyframes vcrypt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vcrypt-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vcrypt-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vcrypt-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vcrypt-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.vcrypt-field input,
+.vcrypt-field select,
+.vcrypt-field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--heading-color);
+  background: color-mix(in srgb, var(--background-color), transparent 15%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+[data-theme="light"] .vcrypt-field input,
+[data-theme="light"] .vcrypt-field select,
+[data-theme="light"] .vcrypt-field textarea {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.vcrypt-field input:focus,
+.vcrypt-field select:focus,
+.vcrypt-field textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 82%);
+}
+
+.vcrypt-alert {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.vcrypt-alert-error {
+  color: #fecaca;
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+[data-theme="light"] .vcrypt-alert-error {
+  color: #b91c1c;
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.vcrypt-primary-btn,
+.vcrypt-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 11px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s, opacity 0.2s, background-color 0.2s;
+}
+
+.vcrypt-primary-btn {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.vcrypt-primary-btn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.vcrypt-primary-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.vcrypt-secondary-btn {
+  background: transparent;
+  color: var(--heading-color);
+  border-color: color-mix(in srgb, var(--default-color), transparent 76%);
+}
+
+.vcrypt-secondary-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.vcrypt-status-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vcrypt-status-card {
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  background: color-mix(in srgb, var(--background-color), transparent 22%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.vcrypt-status-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+.vcrypt-status-icon.is-rejected {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.vcrypt-panel-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.vcrypt-panel-message {
+  font-size: 0.88rem;
+  margin: 0 0 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+}
+
+.vcrypt-request-meta {
+  display: grid;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.vcrypt-panel-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vcrypt-gate-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--default-color), transparent 28%);
+}
+
+.vcrypt-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.vcrypt-admin-link:hover {
+  color: var(--accent-color);
+}
+
+/* Owner Floating Toolbar */
+.vcrypt-owner-bar {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 9980;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--surface-color), transparent 6%);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 55%);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  color: var(--heading-color);
+}
+
+.vcrypt-owner-bar[hidden] {
+  display: none !important;
+}
+
+.vcrypt-owner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vcrypt-owner-btn {
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.vcrypt-owner-btn.ghost {
+  background: transparent;
+  color: var(--heading-color);
+  border-color: color-mix(in srgb, var(--default-color), transparent 72%);
+}
+
+@media (max-width: 640px) {
+  .vcrypt-blurred-backdrop {
+    padding: 20px;
+  }
+
+  .vcrypt-fake-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vcrypt-gate-card {
+    padding: 22px 18px;
+  }
+
+  .vcrypt-field-row,
+  .vcrypt-panel-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .vcrypt-owner-bar {
+    flex-wrap: wrap;
+    border-radius: 16px;
+    right: 16px;
+  }
+}
